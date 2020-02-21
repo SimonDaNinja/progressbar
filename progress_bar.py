@@ -20,5 +20,5 @@ if __name__ == "__main__":
         i += d
         i = min(i,tot)
         d = max(min(d+random.uniform(-5,5),20),0)
-        PrintProgressBar(i,tot,10, i==tot)
+        PrintProgressBar(i,tot, final = i==tot)
         time.sleep(.05)
