@@ -1,6 +1,3 @@
-import time
-import random
-
 def PrintProgressBar(i,n,barlength=40, final = False):
     iInt = int(i)
     print(f"{(100*iInt)//n} %" + (4-len(str((100*iInt)//n)))*' ' +  " [" +\
@@ -12,6 +9,8 @@ def PrintProgressBar(i,n,barlength=40, final = False):
         print("Done!")
 
 if __name__ == "__main__":
+    import time
+    import random
     d = 3
     i = 0
     tot = 5000
