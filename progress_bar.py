@@ -1,10 +1,16 @@
 def PrintProgressBar(i,n,barlength=40, final = False):
     iInt = int(i)
-    print(f"{(100*iInt)//n} %" + (4-len(str((100*iInt)//n)))*' ' +  " [" +\
-            "="*((barlength*iInt)//n) + (">" if ((barlength*iInt)//n)<barlength\
-            else "") + "."*(barlength-(barlength*iInt)//n-1) + "]",
-            end="\r",
-            flush=True)
+    progressUnits = (barlength*iInt)//n
+    # for portability, I avoid f-strings
+    statusString = str((100*iInt)//n)
+    statusString += " %" + (4-len(statusString))*' '
+    barChars = list(barlength*'.')
+    barChars[:progressUnits] = ['=' for i in range(progressUnits)]
+    barChars[progressUnits-1] = '>'
+    barChars.insert(0,'[')
+    barChars[barlength] = ']'
+    barString = ''.join(barChars)
+    print(statusString + barString, end = "\r", flush=True)
     if final:
         print("Done!")
 
