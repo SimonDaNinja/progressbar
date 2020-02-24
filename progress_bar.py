@@ -1,4 +1,4 @@
-def PrintProgressBar(i,n,barlength=40, final = False):
+def PrintProgressBar(i,n,barlength=40, final = None):
     iInt = int(i)
     progressUnits = (barlength*iInt)//n
     # for portability, I avoid f-strings
@@ -11,6 +11,8 @@ def PrintProgressBar(i,n,barlength=40, final = False):
     barChars[barlength] = ']'
     barString = ''.join(barChars)
     print(statusString + barString, end = "\r", flush=True)
+    if final is None:
+        final = i>=n
     if final:
         print("Done!")
 
